@@ -62,12 +62,70 @@ Retorno
 ```
 
 - **`POST /deposit`**: Rota para fazer um deposito;
+  
+Envio no headers
+```
+{
+    "cpf": "33665544744"
+}
+```
+
 Envio
 ```
 {
     "description": "Transferência",
     "amount": 200.00
 }
+```
+
+
+- **`POST /withdraw`**: Rota para fazer um saque;
+
+Envio no headers
+```
+{
+    "cpf": "33665544744"
+}
+```
+
+Envio
+```
+{
+    "description": "Depósito do Ignite",
+    "amount": 15.00
+}
+```
+
+- **`GET /statement`**: Rota para fazer buscar um extrato;
+
+Envio no headers
+```
+{
+    "cpf": "33665544744"
+}
+```
+
+retorno
+```
+[
+    {
+        "description": "Transferência",
+        "amount": 200,
+        "created_at": "2021-03-30T22:33:12.407Z",
+        "type": "credit"
+    },
+    {
+        "description": "Transferência",
+        "amount": 200,
+        "created_at": "2021-03-30T22:33:37.720Z",
+        "type": "credit"
+    },
+    {
+        "amount": 15,
+        "created_at": "2021-03-30T22:34:30.206Z",
+        "type": "debit"
+    }
+]
 ```
 
 ## 🤔 Como contribuir
