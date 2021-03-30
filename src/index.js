@@ -124,4 +124,10 @@ app.put('/account', verifyIfExistsAccountCPF, (req, res) => {
     return res.status(201).send();
 });
 
+app.get('/account', verifyIfExistsAccountCPF, (req, res) => {
+    const { customer } = req;
+
+    return res.json(customer);
+});
+
 app.listen(3333);
