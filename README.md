@@ -24,6 +24,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 Esse projeto é um API para o CRUD de contas, fazer depositos, saques e pegar o saldo da conta.
 
+Obs: o projeto não usa banco, grava tudo em um array.
 ## 🚀 Como Rodar
 
  - Clone o projeto.
@@ -40,6 +41,31 @@ Envio
 {
     "cpf": "33665544744",
     "name": "João Mangueira"
+}
+```
+
+- **`PUT /account`**: Rota para alterar a conta;
+
+Envio no headers
+```
+{
+    "cpf": "33665544744"
+}
+```
+
+Envio
+```
+{
+    "name": "João Mangueira"
+}
+```
+
+- **`DELETE /account`**: Rota para deletar conta;
+
+Envio no headers
+```
+{
+    "cpf": "33665544744"
 }
 ```
 
@@ -96,7 +122,7 @@ Envio
 }
 ```
 
-- **`GET /statement`**: Rota para fazer buscar um extrato;
+- **`GET /statement`**: Rota para buscar um extrato;
 
 Envio no headers
 ```
@@ -126,6 +152,54 @@ retorno
         "type": "debit"
     }
 ]
+```
+
+- **`GET /statement/date`**: Rota para buscar um extrato por data;
+
+Envio no headers
+```
+{
+    "cpf": "33665544744"
+}
+```
+
+retorno
+```
+[
+    {
+        "description": "Transferência",
+        "amount": 200,
+        "created_at": "2021-03-30T22:33:12.407Z",
+        "type": "credit"
+    },
+    {
+        "description": "Transferência",
+        "amount": 200,
+        "created_at": "2021-03-30T22:33:37.720Z",
+        "type": "credit"
+    },
+    {
+        "amount": 15,
+        "created_at": "2021-03-30T22:34:30.206Z",
+        "type": "debit"
+    }
+]
+```
+
+- **`GET /statement/balance`**: Rota para buscar saldo;
+
+Envio no headers
+```
+{
+    "cpf": "33665544744"
+}
+```
+
+retorno
+```
+{
+    "balance": 385
+}
 ```
 
 ## 🤔 Como contribuir
